@@ -6,7 +6,12 @@ $.getJSON('/articles', function(data) {
     $('#articles').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ data[i].link + '</p>');
   }
 });
-
+$(document).ready(function () {
+    $.ajax({
+        method: "GET",
+        url: "/scrape",
+    })
+})
 
 // whenever someone clicks a p tag
 $(document).on('click', 'p', function(){

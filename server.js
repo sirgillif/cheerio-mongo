@@ -23,7 +23,8 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/cheerioConnection');
+mongoose.connect('mongodb://localhost/cheerioConnection'||'//heroku_kt41hd75:7rj4690j5vtemdvpb906gvnk0m@ds145677.mlab.com:45677/
+heroku_kt41hd75');
 var db = mongoose.connection;
 
 // show any mongoose errors
@@ -46,12 +47,12 @@ var Article = require('./models/Article.js');
 // ======
 
 // Simple index route
-app.get('/', function(req, res) {
-  res.send(index.html);
-});
+// app.get('/', function(req, res) {
+//   res.send(index.html);
+// });
 
 // A GET request to scrape the echojs website.
-app.get('/scrape', function(req, res) {
+app.get('/', function(req, res) {
 	// first, we grab the body of the html with request
   request('http://www.echojs.com/', function(error, response, html) {
   	// then, we load that into cheerio and save it to $ for a shorthand selector
@@ -88,7 +89,8 @@ app.get('/scrape', function(req, res) {
     });
   });
   // tell the browser that we finished scraping the text.
-  res.send("Scrape Complete");
+  //  res.send("Scrape Complete");
+	res.send(index.html);
 });
 
 // this will get the articles we scraped from the mongoDB

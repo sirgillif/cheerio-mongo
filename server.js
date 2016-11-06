@@ -23,7 +23,7 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/week18day3mongoose');
+mongoose.connect('mongodb://localhost/cheerioConnection');
 var db = mongoose.connection;
 
 // show any mongoose errors
